@@ -8,6 +8,7 @@ name = "pypi"
 Requests = "*"
 Beautifulsoup4 = "*"
 Flask = "*"
+python-dotenv = '*'
 
 [dev-packages]
 pytest = "*"

@@ -1,14 +1,22 @@
 """Application entry point."""
-from flask import Flask
+import os
+from flask import Flask, request, jsonify
 from webcrawler import getWebsiteAssets
+from dotenv import *
+
+load_dotenv()
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['POST'])
 def getImages():
-
-    return 'Hello, World!'
+    data = request.get_json()
+    getWebsiteAssets(data["url"])
+    return data
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    if os.getenv('ENVIRONMENT') == 'DEVELOPMENT':
+        app.run(host='127.0.0.1',port=os.getenv('PORT'),debug=True)
+    elif os.getenv('ENVIRONMENT') == 'PRODUCTION' or not os.getenv('ENVIRONMENT'):
+        app.run(host='0.0.0.0',port='80')
