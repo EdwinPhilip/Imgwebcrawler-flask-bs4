@@ -12,8 +12,10 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def getImages():
     data = request.get_json()
-    getWebsiteAssets(data["url"])
-    return data
+    if getWebsiteAssets(data["url"]):
+        return 201
+    else:
+        return 500
 
 if __name__ == "__main__":
     if os.getenv('ENVIRONMENT') == 'DEVELOPMENT':
