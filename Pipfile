@@ -9,6 +9,7 @@ Requests = "*"
 Beautifulsoup4 = "*"
 Flask = "*"
 python-dotenv = '*'
+pytest = "*"
 
 [dev-packages]
 pytest = "*"
