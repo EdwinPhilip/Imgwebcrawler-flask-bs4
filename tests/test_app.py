@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from webcrawler.methods import getWebsiteAssets
 
 
-from webcrawler.app import handlers
+from webcrawler.handlers.handlers import handlers
 
 
 def test_base_route():
